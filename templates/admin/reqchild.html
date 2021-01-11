@@ -1,0 +1,104 @@
+{% extends 'admin/admin_base.html' %}
+{% block content %}
+{% load static %}
+
+    
+    <section class="banner-area relative about-banner" id="home">
+				<div class="overlay overlay-bg"></div>
+				<div class="container">
+					<div class="row d-flex align-items-center justify-content-center">
+						<div class="about-content col-lg-12">
+							<h1 class="text-white">
+								 Child Request
+							</h1>
+							<p class="text-white link-nav"><a href="index.html">Primary Center </a>  <span class="lnr lnr-arrow-right"></span>  <a href="about.html">Primary Centers</a></p>
+						</div>
+					</div>
+				</div>
+			</section>
+{% if message %}
+<script>
+alert("{{ message }}")
+</script>
+{% endif %}
+    <section class="ftco-section">
+      <div class="container">
+        <div class="row justify-content-center mb-5 pb-3">
+          <div class="col-md-7 heading-section text-center ftco-animate">
+
+          </div>
+        </div>
+    <div id="page-inner">
+<table class="table table-bordered table-striped table-hover">
+
+<th class="info">Children Details</th>
+<th class="info">Disease</th>
+
+
+<th class="info">Center Details</th>
+<th class="info">Asha Worker Details</th>
+
+
+<th class="info">Update</th>
+<th class="info">View</th>
+
+
+
+{% for dri in chil  %}
+
+<tr  style="background-color: white">
+    <td>Name :{{ dri.c_name}}<br>
+    Age :{{ dri.age}}<br>
+    Address :{{ dri.c_address}}<br>
+    Phone :{{ dri.c_contact}}<br>
+    Ward :{{ dri.ward}}</td>
+    <td>{{ dri.disease}}</td>
+
+    <td>{{ dri.center.user.first_name}}<br>
+    {{ dri.center.address}}<br>
+    {{ dri.center.contact}}<br>
+{#        <form>#}
+{#            <input type="hidden" value="">#}
+{#            <input >#}
+{#            <input >#}
+{#            <button type="submit">Update</button>#}
+{#        </form>#}
+
+    </td>
+    <td>Name :{{ dri.worker.user.first_name}}<br>
+    Address :{{ dri.worker.address}}<br>
+    Contact :{{ dri.worker.contact}}<br>
+    Ward :{{ dri.worker.ward}}<br>
+    </td>
+
+
+    <form method="post">
+        {% csrf_token %}
+      <td>
+          <input name="message" type="text" autocomplete="off" placeholder="Enter any Message" required><br><br>
+          <select required name="vacci">
+              <option value="">Select Vaccine</option>
+              {% for va in va %}
+                  <option value="{{ va.id }}">{{ va.vname }}</option>
+
+              {% endfor %}
+          </select><br><br>
+          <input name="aldat" type="date" autocomplete="off" placeholder="Enter any Message" required><br><br>
+          <input name="altim" type="time" autocomplete="off" placeholder="Enter any Message" required><br><br>
+          <input name="chil" type="hidden" value="{{ dri.id}}" autocomplete="off" placeholder="Enter any Message" required>
+          <input name="center" type="hidden" value="{{ dri.center.id}}" autocomplete="off" placeholder="Enter any Message" required>
+          <button type="submit">Allocate</button>
+      </td>
+    </form>
+
+    <td><a href="ViewAllocation?c_id={{ dri.id}}">Allocates</a></td>
+
+
+</tr>
+
+    {% endfor %}
+</table>
+    </div>
+      </div>
+    </section>
+{% endblock %}

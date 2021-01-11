@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+ {% block content %}
+     {% load static %}
+      {% if message %}
+         <script> alert("{{ message }}")</script>
+     {% endif %}
+<!-- start banner Area -->
+			<section class="banner-area relative about-banner" id="home" style="background-image: url({% static 'img/kelly.jpg' %})">
+				<div class="overlay overlay-bg"></div>
+				<div class="container">
+					<div class="row d-flex align-items-center justify-content-center">
+						<div class="about-content col-lg-12">
+							<h1 class="text-white">
+								Login
+							</h1>
+							<p class="text-white link-nav"><a href="index.html">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="about.html"> Login</a></p>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- End banner Area -->
+
+			<!-- Start appointment Area -->
+			<section class="appointment-area">
+				<div class="container">
+					<div class="row justify-content-between align-items-center pb-120 appointment-wrap">
+{#						#}
+						<div class="col-lg-6 col-md-6 appointment-right pt-60 pb-60">
+							<form class="form-wrap" action="" method="post">
+                                {% csrf_token %}
+								<h3 class="pb-20 text-center mb-30">Login</h3>
+								<input type="text" class="form-control" name="username" placeholder="UserName" required autocomplete="off">
+								<input type="password" class="form-control" name="password" placeholder="Password" required autocomplete="off">
+								<button class="primary-btn text-uppercase">Login</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- End appointment Area -->
+
+
+{% endblock %}

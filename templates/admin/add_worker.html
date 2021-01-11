@@ -1,0 +1,73 @@
+{% extends 'admin/admin_base.html' %}
+ {% block content %}
+     {% load static %}
+      {% if message %}
+         <script> alert("{{ message }}")</script>
+     {% endif %}
+<!-- start banner Area -->
+			<section class="banner-area relative about-banner" id="home">
+				<div class="overlay overlay-bg"></div>
+				<div class="container">
+					<div class="row d-flex align-items-center justify-content-center">
+						<div class="about-content col-lg-12">
+							<h1 class="text-white">
+								Add Worker
+							</h1>
+							<p class="text-white link-nav"><a href="index.html">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="about.html"> Asha Worker</a></p>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- End banner Area -->
+
+			<!-- Start appointment Area -->
+			<section class="appointment-area">
+				<div class="container">
+					<div class="row justify-content-between align-items-center pb-120 appointment-wrap">
+{#						<div class="col-lg-5 col-md-6 appointment-left">#}
+{#							<h1>#}
+{#								Servicing Hours#}
+{#							</h1>#}
+{#							<p>#}
+{#								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore  et dolore magna aliqua.#}
+{#							</p>#}
+{#							<ul class="time-list">#}
+{#								<li class="d-flex justify-content-between">#}
+{#									<span>Monday-Friday</span>#}
+{#									<span>08.00 am - 10.00 pm</span>#}
+{#								</li>#}
+{#								<li class="d-flex justify-content-between">#}
+{#									<span>Saturday</span>#}
+{#									<span>08.00 am - 10.00 pm</span>#}
+{#								</li>#}
+{#								<li class="d-flex justify-content-between">#}
+{#									<span>Sunday</span>#}
+{#									<span>08.00 am - 10.00 pm</span>#}
+{#								</li>#}
+{#							</ul>#}
+{#						</div>#}
+						<div class="col-lg-6 col-md-6 appointment-right pt-60 pb-60">
+							<form class="form-wrap" method="post">
+                                {% csrf_token %}
+								<h3 class="pb-20 text-center mb-30">Add Asha Worker</h3>
+								<input type="text" class="form-control" name="name" placeholder="Asha Worker Name" autocomplete="off" required>
+                                <input type="text" class="form-control" name="addr" placeholder="Address " autocomplete="off" required>
+								<input type="text" class="form-control" name="phone" placeholder="Contact "  pattern="[6-9]{1}[0-9]{9}" autocomplete="off" required>
+								<input type="email" class="form-control" name="email" placeholder="Email Address" autocomplete="off" required>
+                                <input type="number" class="form-control" name="ward" placeholder="Enter Ward Number" autocomplete="off" required>
+
+								<input  class="form-control" name="Username"  placeholder="Username" required autocomplete="off" type="text">
+                                <input  class="form-control" name="Password"  placeholder="Password" required autocomplete="off" type="text">
+
+								<button type="submit" class="primary-btn text-uppercase">Add</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- End appointment Area -->
+
+			<!-- Start facilities Area -->
+
+
+{% endblock %}

@@ -1,0 +1,69 @@
+{% extends 'asha_worker/worker_base.html' %}
+{% block content %}
+{% load static %}
+
+    
+    <section class="banner-area relative about-banner" id="home">
+				<div class="overlay overlay-bg"></div>
+				<div class="container">
+					<div class="row d-flex align-items-center justify-content-center">
+						<div class="about-content col-lg-12">
+							<h1 class="text-white">
+								 Allocation List
+							</h1>
+							<p class="text-white link-nav"><a href="index.html">Primary Center </a>  <span class="lnr lnr-arrow-right"></span>  <a href="about.html">Primary Centers</a></p>
+						</div>
+					</div>
+				</div>
+			</section>
+{% if message %}
+<script>
+alert("{{ message }}")
+</script>
+{% endif %}
+    <section class="ftco-section">
+      <div class="container">
+        <div class="row justify-content-center mb-5 pb-3">
+          <div class="col-md-7 heading-section text-center ftco-animate">
+
+          </div>
+        </div>
+    <div id="page-inner">
+<table class="table table-bordered table-striped table-hover">
+
+<th class="info">Message</th>
+<th class="info">Date</th>
+
+
+<th class="info">Time</th>
+<th class="info">Vaccine Details</th>
+<th class="info">Vaccine Status</th>
+
+
+
+
+
+{% for dri in chil  %}
+
+<tr  style="background-color: white">
+
+
+
+    <td>{{ dri.message }}</td>
+    <td>{{ dri.aldate }}</td>
+    <td>{{ dri.altime }}</td>
+    <td>{{ dri.vaccine.vname }}</td>
+    <td>{{ dri.tstatus }}</td>
+
+
+
+
+
+</tr>
+
+    {% endfor %}
+</table>
+    </div>
+      </div>
+    </section>
+{% endblock %}

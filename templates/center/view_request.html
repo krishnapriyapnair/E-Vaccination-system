@@ -1,0 +1,81 @@
+{% extends 'center/center_base.html' %}
+{% block content %}
+{% load static %}
+
+    
+    <section class="banner-area relative about-banner" id="home">
+				<div class="overlay overlay-bg"></div>
+				<div class="container">
+					<div class="row d-flex align-items-center justify-content-center">
+						<div class="about-content col-lg-12">
+							<h1 class="text-white">
+								 Vaccination Request
+							</h1>
+							<p class="text-white link-nav"><a href="index.html">Primary Center </a>  <span class="lnr lnr-arrow-right"></span>  <a href="about.html">Primary Centers</a></p>
+						</div>
+					</div>
+				</div>
+			</section>
+{% if message %}
+<script>
+alert("{{ message }}")
+</script>
+{% endif %}
+    <section class="ftco-section">
+      <div class="container">
+        <div class="row justify-content-center mb-5 pb-3">
+          <div class="col-md-7 heading-section text-center ftco-animate">
+
+          </div>
+        </div>
+    <div id="page-inner">
+<table class="table table-bordered table-striped table-hover">
+
+<th class="info">Children Details</th>
+
+<th class="info">Vaccine</th>
+
+<th class="info">Message</th>
+<th class="info">Date</th>
+<th class="info">Time</th>
+<th class="info">Status</th>
+<th class="info">Approve</th>
+
+
+
+
+
+
+{% for dri in chil  %}
+
+<tr  style="background-color: white">
+    <td>Name :{{ dri.children.c_name}}<br>
+    Age :{{ dri.children.age}}<br>
+    Address :{{ dri.children.c_address}}<br>
+    Phone :{{ dri.children.c_contact}}<br>
+    Ward: {{ dri.children.ward}}
+    Other Disease: {{ dri.children.disease}}</td>
+    <td>{{ dri.vaccine.vname }}</td>
+    <td>{{ dri.message }}</td>
+    <td>{{ dri.aldate }}</td>
+    <td>{{ dri.altime }}</td>
+    <td>{{ dri.alstatus }}</td>
+    <td><a href="ApproveView?id={{ dri.id}}" class=" btn btn-success">Approve</a></td>
+
+
+
+
+
+
+
+
+
+
+</tr>
+
+    {% endfor %}
+</table>
+    </div>
+      </div>
+    </section>
+{% endblock %}
